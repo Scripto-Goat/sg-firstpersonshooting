@@ -1,18 +1,17 @@
-local config = require 'config.client'
+local Config = require 'config.client'
 local check = false
-local disableCrosshair = config.disableCrosshair
+local DisableCrosshair = Config.DisableCrosshair
 
 
--- Handeling firsperson when use equepped a weapon 
--- Added Whitelistguns for sniper scopes
-local function handelingweapon()
+-- Handling for First Person Weapon (when equipped)
+local function WeaponHandling()
     local playerFreeAiming = IsPlayerFreeAiming(cache.playerId)
     local whitelistguns = nil
 
-            if disableCrosshair then
-                for i = 1, #config.whitelistguns do
-                    if GetHashKey(config.whitelistguns[i]) == cache.weapon then
-                        whitelistguns = config.whitelistguns[i]
+            if DisableCrosshair then
+                for i = 1, #Config.WhitelistedGuns do
+                    if GetHashKey(Config.WhitelistedGuns[i]) == cache.weapon then
+                        whitelistguns = Config.WhitelistedGuns[i]
                     end
                 end
             end
@@ -41,9 +40,9 @@ local function handelingweapon()
             end               
 end
 
--- Handeling for firsperson when players uses fists
-local function handelingfistfight()
-if not config.firspersonfistfight then return end
+-- Handling for First Person Fist Fight (when player uses fists to attack)
+local function FistFightHandling()
+if not Config.FirstPersonFistFight then return end
 
         DisableControlAction(0, 140, true) 
         DisableControlAction(0, 24, true) 
@@ -66,16 +65,16 @@ CreateThread(function()
         SetBlackout(false)
         local sleep = 0
         if cache.weapon then
-            handelingweapon()
+            WeaponHandling()
 
             CreateThread(function()
-                while check and disableCrosshair do
+                while check and DisableCrosshair do
                     HideHudComponentThisFrame(14)
                     Wait(1)
                 end
             end)
         else
-            handelingfistfight()
+            FistFightHandling()
         end
         Wait(sleep)
     end

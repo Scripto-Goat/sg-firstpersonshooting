@@ -1,6 +1,6 @@
 return {
-    whitelistguns = {'weapon_heavysniper_mk2', 'weapon_heavysniper'},
-    disableCrosshair = false,
-    firspersonfistfight = true,
+    WhitelistedGuns = {'weapon_heavysniper_mk2', 'weapon_heavysniper'}, -- Whitelisted guns ex. sniper scopes
+    DisableCrosshair = false,
+    FirstPersonFistFight = true,
 }
 
