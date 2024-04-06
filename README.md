@@ -10,7 +10,7 @@ Do you want to make your players' shooting experience a bit more immersive? Make
 - Possibility to also make people fistfight in first person - configurable in the config of the client;
 
 # Dependencies
-- Framework QBCore/QBOX
+- ox_lib
 
 # Links
 Do you want to know more about Scripto Goat or about our scripts? Join our [Discord](https://discord.gg/ZGAPQE2yC3)!
