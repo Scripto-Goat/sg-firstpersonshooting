@@ -41,17 +41,18 @@ local function WeaponHandling()
 end
 
 -- Handling for First Person Fist Fight (when player uses fists to attack)
+local fistcheck = false
 local function FistFightHandling()
 if not Config.FirstPersonFistFight then return end
 
+    
+    if IsControlPressed(0, 25) then 
+        SetFollowPedCamViewMode(4)
+
+    else
         DisableControlAction(0, 140, true) 
         DisableControlAction(0, 24, true) 
-
-        if IsControlPressed(0, 25) then
-            SetFollowPedCamViewMode(4)
-            DisableControlAction(0, 140, false) 
-            DisableControlAction(0, 24, false) 
-        end
+    end
 
     if IsControlJustReleased(0, 25) then
         SetFollowPedCamViewMode(1)
